@@ -1,14 +1,8 @@
----
+`README.md`
 
-### `README.md`
-
-```markdown
 # Blogging Platform
 
 A minimalistic blogging platform built with MongoDB (NoSQL) for the "Advanced Databases" course final project. Features user authentication, CRUD operations for posts and comments, and a clean blue-themed UI.
-
-## Team
-- [Your Name] (Full participation: backend, frontend, documentation)
 
 ## Setup Instructions
 
@@ -132,6 +126,3 @@ The project uses MongoDB with three collections:
 ├── .env
 └── package.json
 ```
-```
-
----
