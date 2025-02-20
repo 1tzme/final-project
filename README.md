@@ -114,18 +114,6 @@ The project uses MongoDB with three collections:
 
 - **Authentication**: Use `Authorization: Bearer [token]` header for protected routes.
 
-## Data Collection
-- **Current Status**: Not implemented. To meet the requirement, add an endpoint like `/import` to fetch data from an external source (e.g., JSONPlaceholder API):
-  ```javascript
-  app.get('/import', async (req, res) => {
-    const { data } = await axios.get('https://jsonplaceholder.typicode.com/posts');
-    const posts = data.slice(0, 5).map(p => ({ title: p.title, body: p.body, author: null }));
-    await Blog.insertMany(posts);
-    res.json({ message: 'Posts imported' });
-  });
-  ```
-- Install `axios`: `npm install axios`.
-
 ## Database Design Notes
 - **Indexing**: Timestamps (`createdAt`, `updatedAt`) indexed via `{ timestamps: true }`.
 - **Optimization**: Uses `populate('author', 'username')` for efficient user data retrieval.
@@ -145,24 +133,5 @@ The project uses MongoDB with three collections:
 └── package.json
 ```
 ```
-
----
-
-### Инструкции по использованию
-
-1. **Скопируйте текст выше**:
-   - Выделите весь код от `# Blogging Platform` до последней строки и вставьте в файл `README.md` в корне вашего проекта.
-
-2. **Настройте персонализацию**:
-   - Замените `[Your Name]` на ваше имя в разделе "Team".
-   - Замените `[your-username]/[your-repo]` на реальный путь к вашему GitHub-репозиторию.
-
-3. **Добавьте в GitHub**:
-   - Создайте файл `README.md` в корне проекта, вставьте текст, закоммитьте и запушьте:
-     ```bash
-     git add README.md
-     git commit -m "Add README with setup instructions and database schema"
-     git push origin main
-     ```
 
 ---
