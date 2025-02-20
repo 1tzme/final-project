@@ -20,7 +20,7 @@ mongoose.connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('Error connecting to DB:', err));
 
-// Schemas
+/* schemas */
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true }
@@ -41,7 +41,7 @@ const commentSchema = new mongoose.Schema({
 }, { timestamps: true });
 const Comment = mongoose.model('Comment', commentSchema, 'comments');
 
-// Middleware для проверки ObjectId
+
 const validateObjectId = (paramName) => (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid(req.params[paramName])) {
     return res.status(400).json({ error: `Invalid ${paramName} ID` });
@@ -50,7 +50,7 @@ const validateObjectId = (paramName) => (req, res, next) => {
   next();
 };
 
-// Аутентификация
+/* authentication */
 const authenticate = (req, res, next) => {
   const token = req.header('Authorization');
   if (!token) return res.status(401).json({ error: 'Access denied: No token provided' });
@@ -64,13 +64,13 @@ const authenticate = (req, res, next) => {
   }
 };
 
-// Обработчик ошибок
+/* Error handler */
 const errorHandler = (res, err, message) => {
   console.error(`${message}:`, err.message);
   res.status(500).json({ error: `${message}: ${err.message}` });
 };
 
-// Маршруты
+/* paths */
 app.post('/auth/register', async (req, res) => {
   const { username, password } = req.body;
   try {

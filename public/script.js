@@ -1,6 +1,5 @@
 const apiUrl = 'http://localhost:3000';
 
-// Утилитные функции
 const checkToken = (redirect = 'auth.html') => {
   const token = localStorage.getItem('token');
   if (!token) {
@@ -28,7 +27,7 @@ const apiFetch = async (url, options = {}) => {
   return res.json();
 };
 
-// Переключение форм
+/* from switch */
 const showRegisterForm = () => {
   document.getElementById('login-form').style.display = 'none';
   document.getElementById('register-form').style.display = 'block';
@@ -39,7 +38,7 @@ const showLoginForm = () => {
   document.getElementById('login-form').style.display = 'block';
 };
 
-// Аутентификация
+/* authentication */
 const register = async () => {
   const username = document.getElementById('register-username').value;
   const password = document.getElementById('register-password').value;
@@ -95,7 +94,7 @@ const logout = () => {
   window.location.href = 'auth.html';
 };
 
-// Посты
+/* posts */
 const fetchPosts = async () => {
   try {
     const posts = await fetch(`${apiUrl}/posts`).then(res => res.json());
@@ -209,7 +208,7 @@ const deletePost = async (id) => {
   }
 };
 
-// Инициализация
+/* initialization */
 document.addEventListener('DOMContentLoaded', () => {
   const token = localStorage.getItem('token');
   const navButtons = [
